@@ -1,0 +1,55 @@
+enable
+configure terminal
+hostname R1
+no ip domain lookup
+line console 0
+ logging synchronous
+ exec-timeout 0 0
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+ ip ospf 1 area 0
+!
+! Link do R2 (Internal)
+interface GigabitEthernet1
+ description Link_to_R2
+ ip address 10.1.12.1 255.255.255.0
+ no shutdown
+ ip ospf 1 area 0
+!
+! Link do R5 (External - ISP1)
+interface GigabitEthernet2
+ description Link_to_ISP1_R5
+ ip address 10.1.15.1 255.255.255.0
+ no shutdown
+!
+! Link do R3 (Internal)
+interface GigabitEthernet3
+ description Link_to_R3
+ ip address 10.1.13.1 255.255.255.0
+ no shutdown
+ ip ospf 1 area 0
+!
+! Link do R4 (Internal)
+interface GigabitEthernet4
+ description Link_to_R4
+ ip address 10.1.14.1 255.255.255.0
+ no shutdown
+ ip ospf 1 area 0
+!
+! Link do R7 (External - IXP)
+interface GigabitEthernet5
+ description Link_to_IXP_R7
+ ip address 10.1.17.1 255.255.255.0
+ no shutdown
+!
+router ospf 1
+ router-id 1.1.1.1
+ passive-interface default
+ no passive-interface GigabitEthernet1
+ no passive-interface GigabitEthernet3
+ no passive-interface GigabitEthernet4
+ no passive-interface Loopback0
+!
+end
+write

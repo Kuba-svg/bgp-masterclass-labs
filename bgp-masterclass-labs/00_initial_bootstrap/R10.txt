@@ -1,0 +1,21 @@
+enable
+configure terminal
+hostname R10
+no ip domain lookup
+!
+line console 0
+ logging synchronous
+ exec-timeout 0 0
+!
+interface Loopback0
+ description Customer_B_Branch
+ ip address 10.10.10.10 255.255.255.255
+!
+! Link do R4 (Provider)
+interface GigabitEthernet0/1
+ description Link_to_Provider_R4
+ ip address 10.1.104.10 255.255.255.0
+ no shutdown
+!
+end
+write

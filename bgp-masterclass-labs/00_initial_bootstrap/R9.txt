@@ -1,0 +1,21 @@
+enable
+configure terminal
+hostname R9
+no ip domain lookup
+!
+line console 0
+ logging synchronous
+ exec-timeout 0 0
+!
+interface Loopback0
+ description Customer_B_HQ
+ ip address 9.9.9.9 255.255.255.255
+!
+! Link do R3 (Provider)
+interface GigabitEthernet0/5
+ description Link_to_Provider_R3
+ ip address 10.1.39.9 255.255.255.0
+ no shutdown
+!
+end
+write
