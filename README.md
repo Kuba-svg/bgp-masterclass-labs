@@ -9,7 +9,7 @@ You can watch the full playlist on YouTube here: **https://www.youtube.com/watch
 ## 🗺️ Lab Topology (The Butterfly)
 We use a consistent 10-router topology throughout the series, simulating a real-world Service Provider environment.
 
-![BGP Lab Topology](images/topology-full.png)
+![BGP Lab Topology]([images/topology-full.png](https://github.com/Kuba-svg/bgp-masterclass-labs/blob/main/bgp-masterclass-labs/images/topology-full.png))
 
 ### Network Roles:
 * **AS 65000 (Our Core):** R1, R2 (Edge) & R3, R4 (Core/RR).
